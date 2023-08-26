@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t shreyansh/frontend .
+
+script:
+  - docker run -e CI=true shreyansh/frontend npm run test
